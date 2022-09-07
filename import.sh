@@ -11,3 +11,5 @@ for acronym in "$@"
 do
   docker exec wagtail_web ./manage.py hcpss_import $acronym /content/$acronym
 done
+
+docker exec wagtail_web ./manage.py runserver 0.0.0.0:8000
