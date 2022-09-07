@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Important News & Upcoming Events</h2>
+<div class="grid-items-lines">
+    {% for feature in page.featured_content.all %}
+        <a href="{{ feature.content.url }}" class="grid-item">
+            <h1><i class="fa fa-bookmark"></i> {{ feature.content.title }}</h1>
+            <p>{{ feature.content.body|striptags|truncatechars:100 }}</p>
+        </a>
+    {% endfor %}
+</div>
+
+<h2>Essential Applications & Resources</h2>
+<ul class="bullets">
+    <li class="bullet three-col-bullet">
+        <div class="bullet-icon bullet-icon-1">
+            <i class="fa fa-{{ page.resource_list_one.icon }}"></i>
+        </div>
+
+        <div class="bullet-content">
+            <h2>{{ page_resource_list_one.title }}</h2>
+            {% for resource in page.resource_list_one.resources.all %}
+                {% include "resources/resource.html" %}
+            {% endfor %}
+        </div>
+    </li>
+    <li class="bullet three-col-bullet">
+        <div class="bullet-icon bullet-icon-2">
+            <i class="fa fa-{{ page.resource_list_two.icon }}"></i>
+        </div>
+
+        <div class="bullet-content">
+            <h2>{{ page_resource_list_two.title }}</h2>
+            {% for resource in page.resource_list_two.resources.all %}
+                {% include "resources/resource.html" %}
+            {% endfor %}
+        </div>
+    </li>
+    <li class="bullet three-col-bullet">
+        <div class="bullet-icon bullet-icon-3">
+            <i class="fa fa-{{ page.resource_list_three.icon }}"></i>
+        </div>
+
+        <div class="bullet-content">
+            <h2>{{ page_resource_list_three.title }}</h2>
+            {% for resource in page.resource_list_three.resources.all %}
+                {% include "resources/resource.html" %}
+            {% endfor %}
+        </div>
+    </li>
+</ul>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block content_title %}
+    <h1 class="title">{{ page.title }}</h1>
+{% endblock content_title %}
+
+{% block content %}
+    <article>
+        <header class="node__meta">
+            <div class="node__submitted">
+                {{ page.first_published_at }}
+            </div>
+        </header>
+        <section>
+            {{ page.body|richtext }} {{ snap }}
+        </section>
+    </article>
+{% endblock %}

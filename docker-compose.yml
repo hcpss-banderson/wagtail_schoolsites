@@ -1,0 +1,27 @@
+version: '3'
+services:
+  database:
+    container_name: wagtail_db
+    image: postgres:14
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: schools
+      POSTGRES_USER: wagtail
+      POSTGRES_PASSWORD: wagtail
+    volumes:
+      - "./.data:/var/lib/postgresql/data"
+  wagtail:
+    container_name: wagtail_web
+    build: .
+    image: reg.hcpss.org/school/wagtail
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./app:/app"
+      - "./content:/content"
+    environment:
+      DJANGO_SUPERUSER_USERNAME: admin
+      DJANGO_SUPERUSER_EMAIL: brendan_anderson@hcpss.org
+      DJANGO_SUPERUSER_PASSWORD: admin
+    command: ["tail", "-f", "/dev/null"]

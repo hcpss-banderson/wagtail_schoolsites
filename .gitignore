@@ -1,0 +1,6 @@
+/content
+.data
+.DS_Store
+.idea
+*.pyc
+/app/media/*

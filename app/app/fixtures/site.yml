@@ -1,0 +1,8 @@
+---
+{ url: /aes, type: home.HomePage, title: 'Atholton Elementary School' }
+---
+!site { hostname: aes.hcpss.localhost, port: 8000, site_name: 'Atholton Elementary School', root_page: !page { url: /aes } }
+---
+{ url: /aes/news, type: news.NewsListingPage, title: 'Latest News' }
+---
+{ url: /aes/events, type: events.EventListingPage, title: Calendar }

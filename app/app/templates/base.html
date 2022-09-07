@@ -1,0 +1,19 @@
+{% extends "bulma/base.html" %}
+{% load static bulma_tags wagtailuserbar %}
+
+
+{% block extra_css %}
+    <!--<link rel="stylesheet" href="{% static 'css/app.css' %}">-->
+    <link rel="stylesheet" href="https://www.hcpss.org/f/mrb/base/hs-theme/stylesheets/aes.css">
+{% endblock extra_css %}
+
+{% block header %}
+    {% wagtailuserbar 'bottom-right' %}
+    {% include '_header.html' %}
+    {% include '_nav.html' %}
+    <div class="collage"></div>
+{% endblock %}
+
+{% block footer %}
+    {% include '_footer.html' %}
+{% endblock %}

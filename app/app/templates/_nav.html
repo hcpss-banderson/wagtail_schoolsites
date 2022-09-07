@@ -1,0 +1,39 @@
+{% load menu_tags %}
+{% get_main_menu as navigation %}
+
+<nav role="navigation" aria-labelledby="block-mainnavigation-menu" id="block-mainnavigation" class="navbar">
+    <div class="container">
+        <div class="navbar-brand">
+            <h2 class="visually-hidden navbar-item navbar-title" id="block-mainnavigation-menu">
+                Main navigation
+            </h2>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="block-mainnavigation-collapsible-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="block-mainnavigation-collapsible-menu" class="navbar-menu">
+            <div class="navbar-start">
+                {% for item in navigation.menu_items.all %}
+                    {% get_menu item.slug_of_submenu as submenu %}
+                    {% if submenu %}
+                        <div class="navbar-item has-dropdown is-hoverable">
+                    {% endif %}
+
+                    <a href="{{ item.link }}" class="navbar-item">{{ item.title }}</a>
+
+                    {% if submenu %}
+                            <div class="navbar-dropdown">
+                                {% for subitem in submenu.menu_items.all %}
+                                    <a href="{{ subitem.link }}" class="navbar-item">{{ subitem.title }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</nav>
